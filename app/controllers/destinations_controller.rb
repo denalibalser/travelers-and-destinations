@@ -36,9 +36,13 @@ class DestinationsController  < ApplicationController
     end 
 
     get '/destinations/:id' do #-READ
-        if logged_in?
+        if logged_in? 
             @destination = Destination.find_by_id(params[:id])
-            erb :'destinations/destination_show'
+            if @destination && current_user.id == @destination.id 
+                erb :'destinations/destination_show'
+            else 
+                redirect '/destinations'
+            end 
         else 
             redirect '/'
         end 
