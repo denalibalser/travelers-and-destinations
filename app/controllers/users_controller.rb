@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    
+
     get '/signup' do
         if logged_in?  
             redirect to '/destinations'
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     get '/logout' do
         if logged_in?
-          session.destroy
+          session.clear
           redirect to '/'
         else
           redirect to '/'

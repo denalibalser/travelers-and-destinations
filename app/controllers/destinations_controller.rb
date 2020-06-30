@@ -46,8 +46,6 @@ class DestinationsController  < ApplicationController
         authorize(@destination)
         @destination.destroy
         redirect '/destinations'
+    end 
            
-
-
-
 end 
