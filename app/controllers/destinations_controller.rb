@@ -1,6 +1,5 @@
 class DestinationsController  < ApplicationController
  
-
     #get route for rendering form  for creating new destinations - CREATE
     get '/destinations/new' do 
         if logged_in? 
