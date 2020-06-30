@@ -1,10 +1,11 @@
-<h1>hi</h1>
+<h1>Destinations</h1>
 <ul>
 <% @destinations.each do |destination| %> 
     <li><a href="/destinations/<%=destination.id%>"><%= destination.location %></a></li>
 <% end %>
 </ul>
 
-
-
+<p><a class="button" href="/destinations/new">Create New Destination</a></p>
+<p>OR</p>
+<p><a class="button" href="/logout">Logout</a></p>
    <%#  want to have list of all destination names as links that lead to their individual show pages %>

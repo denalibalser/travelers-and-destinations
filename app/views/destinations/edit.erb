@@ -1,0 +1,17 @@
+<form action="/destinations/<%=@destination.id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+<label for="location">Location:</label>
+<input type="text" id="location" name="location" value="<%=@destination.location%>">
+
+<label for="description">Description:</label>
+<input type="text" id="description" name="description" value="<%=@destination.description%>">
+
+<label for="activities">Activities:</label>
+<input type="text" id="activities" name="activities" value="<%=@destination.activities%>">
+<br>
+<br>
+<input type="submit" id="submit" value="Submit">
+<p>OR</p>
+<p><a class="button" href="/destinations/<%=@destination.id%>/delete">Delete Destination</a></p>
+</form>

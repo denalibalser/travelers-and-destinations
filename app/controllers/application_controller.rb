@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
             @user = User.create(username: params[:username], name: params[:name], email: params[:email], password: params[:password])
             session[:user_id] = @user.id
             #binding.pry
-            redirect to '/destinations'
+            redirect to '/destinations/new'
         else 
             redirect '/signup'
         end 
@@ -50,13 +50,11 @@ class ApplicationController < Sinatra::Base
     get '/logout' do
         if logged_in?
           session.destroy
-          redirect to '/login'
+          redirect to '/'
         else
           redirect to '/'
         end
     end
-
-
 
     helpers do
         def logged_in?

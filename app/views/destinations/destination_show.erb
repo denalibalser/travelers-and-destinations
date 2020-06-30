@@ -5,14 +5,22 @@
 
 <h3>Activities:</h3>
 
-<%= @destination.activities %>  
-   
+<%=@destination.activities %>  
 
+<br>
+<p><a class="button" href="/destinations/<%=@destination.id%>/edit"> Edit Destination</a></p>
+
+
+<p><a class="button" href="/destinations">See All Destinations</a></p>
+
+<form action="/destinations/<%= @destination.id %>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" id="submit" value="Delete Destination">
+</form>
 
 
 
 <%#maybe have activities as checkboxes?%>
 
-<%#'create' or 'edit' href link buttons on this show page? %>
 
 
