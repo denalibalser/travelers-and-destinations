@@ -1,13 +1,5 @@
 class DestinationsController  < ApplicationController
-
-    get '/destinations' do #-READ
-        if logged_in? 
-            @destinations = current_user.destinations
-            erb :'destinations/index'
-        else 
-            redirect '/'
-        end 
-    end 
+ 
 
     #get route for rendering form  for creating new destinations - CREATE
     get '/destinations/new' do 
@@ -35,6 +27,15 @@ class DestinationsController  < ApplicationController
         end 
     end 
 
+    get '/destinations' do #-READ
+        if logged_in? 
+            @destinations = current_user.destinations
+            erb :'destinations/index'
+        else 
+            redirect '/'
+        end 
+    end
+
     get '/destinations/:id' do #-READ
         if logged_in? 
             @destination = Destination.find_by_id(params[:id])
@@ -48,7 +49,7 @@ class DestinationsController  < ApplicationController
         end 
     end 
 
-    #get route for rendering destination edit form 
+    #get route for rendering destination edit form -UPDATE
     get '/destinations/:id/edit' do 
         if logged_in?
             @destination = Destination.find_by_id(params[:id])
@@ -62,7 +63,7 @@ class DestinationsController  < ApplicationController
         end 
     end 
 
-    #post route for adding edited destination to database 
+    #post route for adding edited destination to database -UPDATE
     patch '/destinations/:id' do 
         if logged_in? 
             if params[:location] == "" && params[:description] == "" && params[:activities] == ""
@@ -83,7 +84,7 @@ class DestinationsController  < ApplicationController
     end 
 
 
-    #delete route for deleting a destination 
+    #delete route for deleting a destination -DELETE
     delete '/destinations/:id/delete' do 
         if logged_in?
             @destination = Destination.find_by_id(params[:id])
