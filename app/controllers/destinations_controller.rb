@@ -4,6 +4,7 @@ class DestinationsController  < ApplicationController
         authenticate
         erb :'destinations/new'
     end
+
     post  '/destinations' do 
         authenticate
         @destination = current_user.destinations.create(location: params[:location], description: params[:description], activities: params[:activities])
@@ -19,7 +20,7 @@ class DestinationsController  < ApplicationController
     get '/destinations/:id' do 
         @destination = Destination.find_by_id(params[:id])
         authorize(@destination)
-        erb :'destinations/destination_show'
+        erb :'destinations/show'
     end 
 
     get '/destinations/:id/edit' do 
