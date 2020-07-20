@@ -6,9 +6,13 @@ class DestinationsController  < ApplicationController
     end
 
     post  '/destinations' do 
-        authenticate
-        @destination = current_user.destinations.create(location: params[:location], description: params[:description], activities: params[:activities])
-        redirect "/destinations/#{@destination.id}"
+        if params[:location] != "" && params[:description] != "" && params[:activities] != ""
+            authenticate
+            @destination = current_user.destinations.create(location: params[:location], description: params[:description], activities: params[:activities])
+            redirect "/destinations/#{@destination.id}"
+        else 
+            redirect to '/destinations/new'
+        end 
     end 
 
     get '/destinations' do 
@@ -31,9 +35,13 @@ class DestinationsController  < ApplicationController
 
     patch '/destinations/:id' do 
         @destination = Destination.find_by_id(params[:id])
-        authorize(@destination)
-        @destination.update(location: params[:location], description: params[:description], activities: params[:activities])
-        redirect "/destinations/#{@destination.id}" 
+        if params[:location] != "" && params[:description] != "" && params[:activities] != "" 
+            authorize(@destination)
+            @destination.update(location: params[:location], description: params[:description], activities: params[:activities])
+            redirect "/destinations/#{@destination.id}" 
+        else 
+            redirect "/destinations/#{@destination.id}/edit"
+        end 
     end 
 
     delete '/destinations/:id/delete' do 

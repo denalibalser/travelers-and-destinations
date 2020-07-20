@@ -8,10 +8,8 @@
 <%=@destination.activities %>  
 
 <br>
+<br>
 <p><a class="button" href="/destinations/<%=@destination.id%>/edit"> Edit Destination</a></p>
-
-
-<p><a class="button" href="/destinations">See All Destinations</a></p>
 
 <form action="/destinations/<%= @destination.id %>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="delete">
